@@ -52,5 +52,14 @@ class gantry:
 	print("Total Bending Moment is", M)
 	#Shear Force
 	print("Shear Force")
+
+	SF_L = WC*(2-c/L) #Shear Force due to wheel load
+	SF_DL = wL/2 #Shear Force due to Dead Load
+	SF_Horizontal = W_Horizontal*(2-c/L) #Horizontal Shear Force
+	SF_Braking =  W_Braking*e/L #Shear Force due to Drag Force
+	SF = SF_L + SF_DL + SF_Horizontal + SF_Braking #Total Shear Force
+
+	print("Total Shear Force is", SF)
+
 	#Design Calculation 
 	print("Design Calculation")
