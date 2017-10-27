@@ -22,12 +22,16 @@ class gantry:
 	W_Vert_Total = (Wt + W1) * 1.25 #Total Load, 1.25 is multiplied for impact
 	WC = FOS * W_Vert_Total #Factored Load
 	print("Total Vertical Load is", WC);
+	
 	#Horizontal Load
 	W_Horizontal = FOS * 0.1 * (W_Crane + W_Crab)
 	print("Total Horizontal Load is", W_Horizontal)
+	
 	#Longitudinal Braking Load
 	W_Braking = 0.05 * W_Crane * FOS
 	print("Horizontal Braking Load is", W_Braking)
+	
+	
 	#Moment Calculation
 	print("Moments")
 	#Shear Force
