@@ -8,7 +8,8 @@ print("Gantry Girder Designer")
 print("Author- Yajnavalkya Bandyopadhyay")
 print("email- yajnab@gmail.com")
 
-
+#Constants
+FOS = 1.5 #Factor of Safety
 
 class gantry:
 	#Load Calculation
