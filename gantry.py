@@ -19,7 +19,7 @@ L1 = #Length of Crane
 L = #Length of Gantry warehouse
 c = #W of Crane
 e= #Depth of Rail and half the depth of the girder
-w = #Dead Load
+w_d = #Dead Load (Factored)
 
 class gantry:
 	#Load Calculation
@@ -47,6 +47,7 @@ class gantry:
 	M2 = 2*WC*(L/2-c/4)**2/L
 	M_v = (M2>M1)?M2:M1 #No Self Load Considered
 	print("Vertical Bending without considering Self Load", M_v)
+	w = FOS*w_d
 	M_v_sf = w*L**2/8 #Due to Self Load
 	print("Vertical Bending due to dead Load", M_v_sf)
 	#Horizontal Bending Moment
