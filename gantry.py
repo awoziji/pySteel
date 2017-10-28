@@ -8,6 +8,8 @@ print("Gantry Girder Designer")
 print("Author- Yajnavalkya Bandyopadhyay")
 print("email- yajnab@gmail.com")
 
+import numpy as np
+
 #Constants
 FOS = 1.5 #Factor of Safety
 
