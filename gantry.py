@@ -45,7 +45,7 @@ class gantry:
 	#Vertical Maximum Bending Moment
 	M1 = WC*L/4
 	M2 = 2*WC*(L/2-c/4)**2/L
-	M_v = (M2>M1)?M2:M1 #No Self Load Considered
+	M_v = M2 if (M2>M1) else M1 #No Self Load Considered
 	print("Vertical Bending without considering Self Load", M_v)
 	w = FOS*w_d
 	M_v_sf = w*L**2/8 #Due to Self Load
