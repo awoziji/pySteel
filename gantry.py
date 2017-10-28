@@ -12,14 +12,14 @@ import numpy as np
 
 #Constants
 FOS = 1.5 #Factor of Safety
-W_Crane = #Weight of the Crane
-W_Crab = #Weight of the Crab
-Lc = #Length of
-L1 = #Length of Crane
-L = #Length of Gantry warehouse
-c = #W of Crane
-e= #Depth of Rail and half the depth of the girder
-w_d = #Dead Load (Factored)
+W_Crane = 200#Weight of the Crane
+W_Crab = 40#Weight of the Crab
+Lc = 15#Length of
+L1 = 1.2#Length of Crane
+L = 7.5#Length of Gantry warehouse
+c = 3.5#W of Crane
+e= 0.45#Depth of Rail and half the depth of the girder
+w_d = 1.9#Dead Load (Factored)
 
 class gantry:
 	#Load Calculation
