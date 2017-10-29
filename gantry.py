@@ -21,6 +21,7 @@ c = 3.5#W of Crane
 e= 0.45#Depth of Rail and half the depth of the girder
 w_d = 1.9#Dead Load (Factored)
 
+
 class gantry:
 	#Load Calculation
 	print("Load Calculation")
@@ -77,3 +78,6 @@ class gantry:
 	print("We choose the depth to", Ll);
 	Lw = Ll = (round((L*1000/30)/50.0)*50.0)
 	print("We choose the Width to", Lw); #Rounding off to nearest multiple of 25
+
+	I = (15.6*W_crane*(L-c)*(2*L**2+2*L*c-c**2)/L*E)*10**6 #Converting to mm**4 unit system
+	print("The Required Momenet of Inertia is", I);
