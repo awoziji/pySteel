@@ -87,3 +87,6 @@ class gantry:
 
 	Zp = 1.4*M*10**6/fy #Plastic Index
 	print("The Required Plastic Index is", Zp);
+
+	ISMB = np.genfromtxt('ISMB.csv' , dtype=None, delimiter=',', names=True)
+	ISMC = np.genfromtxt('ISMC.csv' , dtype=None, delimiter=',', names=True)
