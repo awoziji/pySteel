@@ -20,6 +20,7 @@ L = 7.5#Length of Gantry warehouse
 c = 3.5#W of Crane
 e= 0.45#Depth of Rail and half the depth of the girder
 w_d = 1.9#Dead Load (Factored)
+E = 2*10**5 #Modulus of Elasticity
 
 
 class gantry:
