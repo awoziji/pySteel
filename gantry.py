@@ -82,3 +82,6 @@ class gantry:
 
 	I = ((15.6*W_Crane*1000)*(L-c)*(2*L**2+2*L*c-c**2)/(L*E))*10**6 #Converting to mm**4 unit system
 	print("The Required Momenet of Inertia is", I);
+
+	Zp = 1.4*M*10**6/fy #Plastic Index
+	print("The Required Plastic Index is", Zp);
