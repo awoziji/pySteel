@@ -72,3 +72,8 @@ class gantry:
 
 	#Design Calculation 
 	print("Design Calculation")
+
+	Ll = (round((L*1000/12)/50.0)*50.0) #Rounding off to nearest multiple of 50
+	print("We choose the depth to", Ll);
+	Lw = Ll = (round((L*1000/30)/50.0)*50.0)
+	print("We choose the Width to", Lw); #Rounding off to nearest multiple of 25
