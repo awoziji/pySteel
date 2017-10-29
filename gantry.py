@@ -80,5 +80,5 @@ class gantry:
 	Lw = Ll = (round((L*1000/30)/50.0)*50.0)
 	print("We choose the Width to", Lw); #Rounding off to nearest multiple of 25
 
-	I = (15.6*W_crane*(L-c)*(2*L**2+2*L*c-c**2)/L*E)*10**6 #Converting to mm**4 unit system
+	I = ((15.6*W_Crane*1000)*(L-c)*(2*L**2+2*L*c-c**2)/(L*E))*10**6 #Converting to mm**4 unit system
 	print("The Required Momenet of Inertia is", I);
