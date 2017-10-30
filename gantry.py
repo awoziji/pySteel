@@ -89,3 +89,6 @@ class gantry:
 
 	ISMB = np.genfromtxt('ISMB.csv' , dtype=None, delimiter=',', names=True)
 	ISMC = np.genfromtxt('ISMC.csv' , dtype=None, delimiter=',', names=True)
+
+	I_sec, = np.where(ISMB['Designation']>=Ll)
+	C_sec, = np.where(ISMC['Designation']>=Lw)
