@@ -92,3 +92,25 @@ class gantry:
 
 	I_sec, = np.where(ISMB['Designation']>=Ll)
 	C_sec, = np.where(ISMC['Designation']>=Lw)
+	i=0;j=1
+	I_sec_sel=ISMB['Designation'][I_sec[i]]#Selected first iteration
+	C_sec_sel=ISMC['Designation'][C_sec[j]]#Selected first iteration
+
+	print("The selected I section  and C Section are specifically ISMB",I_sec_sel,"and ISMC",C_sec_sel)
+
+	#Elastic Properties of the Joint Section
+	A = ISMB['A'][I_sec[i]] + ISMC['A'][C_sec[j]] #Area
+	print("The Summative Area is", A)
+	y_bar = ((ISMB['A'][I_sec[i]]*ISMB['h'][I_sec[i]]/2) + ISMC['A'][C_sec[j]]*(ISMB['h'][I_sec[i]]+ISMC['tw'][C_sec[j]]-ISMC['Cyy'][C_sec[j]]))/A
+	print("The y bar of the joint section is", y_bar)
+	h1 = y_bar - ISMB['h'][I_sec[i]]/2
+	print("h1 is =", h1)
+	h2 = (ISMB['h'][I_sec[i]]+ISMC['tw'][C_sec[j]])-y_bar-ISMC['Cyy'][C_sec[j]]
+	print("h2 is =", h2)
+	Iz = ISMB['Ixx'][I_sec[i]]*10**4 +  ISMB['A'][I_sec[i]]*(10**2)*h1**2 + ISMC['Iyy'][C_sec[j]] + ISMC['A'][C_sec[j]]*(10**2)*h2**2
+	print("Moment of Intertia along x axis is", Iz)
+	Zzb = Iz/y_bar
+	Zzt = Iz/(ISMB['h'][I_sec[i]]-y_bar)
+	print("Plastic Sections are Zzb=",Zzb,"and Zzt=",Zzt)
+	Iy = (ISMB['Iyy'][I_sec[i]] + ISMC['Ixx'][C_sec[j]])*10**4
+	print("Moment of Intertia along y axis is", Iy)
