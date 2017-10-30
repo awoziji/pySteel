@@ -114,3 +114,10 @@ class gantry:
 	print("Plastic Sections are Zzb=",Zzb,"and Zzt=",Zzt)
 	Iy = (ISMB['Iyy'][I_sec[i]] + ISMC['Ixx'][C_sec[j]])*10**4
 	print("Moment of Intertia along y axis is", Iy)
+
+
+	#Plastic Properties
+	dp = ISMC['A'][C_sec[j]]*100/(2*ISMB['tw'][I_sec[i]])
+	print(ISMC['A'][C_sec[j]])
+	print((2*ISMB['tw'][I_sec[i]]))
+	print("The Plastic Neutral axis is", dp)
