@@ -121,3 +121,6 @@ class gantry:
 	#Plastic Properties
 	dp = ISMC['A'][C_sec[j]]*100/(2*ISMB['tw'][I_sec[i]])
 	print("The Plastic Neutral axis is", dp)
+
+	SAy= ISMB['tf'][I_sec[i]]*ISMB['b'][I_sec[i]]*(ISMB['h'][I_sec[i]]/2+dp-ISMB['tf'][I_sec[i]]/2)+((ISMB['h'][I_sec[i]]/2+dp-ISMB['tf'][I_sec[i]])**2)*ISMB['tw'][I_sec[i]]/2
+	print("SAy is=",SAy)
