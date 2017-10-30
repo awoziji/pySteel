@@ -78,7 +78,7 @@ class gantry:
 
 	Ll = (round((L*1000/12)/50.0)*50.0) #Rounding off to nearest multiple of 50
 	print("We choose the depth to", Ll);
-	Lw = Ll = (round((L*1000/30)/50.0)*50.0)
+	Lw = (round((L*1000/30)/50.0)*50.0)
 	print("We choose the Width to", Lw); #Rounding off to nearest multiple of 25
 
 	I = ((15.6*W_Crane*1000)*(L-c)*(2*L**2+2*L*c-c**2)/(L*E))*10**6 #Converting to mm**4 unit system
