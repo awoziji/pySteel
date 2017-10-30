@@ -1,6 +1,8 @@
 #
 ##Gantry Girder Designer
 ##Author-Yajnavalkya Bandyopadhyay
+##B.Tech Project Part 1
+##Supervisor - Mr. Somnath Majumder
 ##email-yajnab@gmail.com
 #
 
@@ -118,6 +120,4 @@ class gantry:
 
 	#Plastic Properties
 	dp = ISMC['A'][C_sec[j]]*100/(2*ISMB['tw'][I_sec[i]])
-	print(ISMC['A'][C_sec[j]])
-	print((2*ISMB['tw'][I_sec[i]]))
 	print("The Plastic Neutral axis is", dp)
