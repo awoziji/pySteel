@@ -11,6 +11,7 @@ print("Author- Yajnavalkya Bandyopadhyay")
 print("email- yajnab@gmail.com")
 
 import numpy as np
+from colorama import init, Fore, Style
 
 #Constants
 FOS = 1.5 #Factor of Safety
@@ -27,6 +28,7 @@ fy = 250 #Value of fy
 
 
 class gantry:
+	init()
 	#Load Calculation
 	print("Load Calculation")
 	#Vertical Load
@@ -136,14 +138,14 @@ class gantry:
 	b_t_C = ((ISMC['b'][C_sec[j]]-ISMC['tw'][C_sec[j]])/2)/ISMC['tf'][C_sec[j]]
 	d_t_I = ((ISMB['h'][I_sec[i]]-2*ISMB['tf'][I_sec[i]])/ISMB['tw'][I_sec[i]])
 	if(b_t_I<9.4):
-		print("b/t ratio of I beam",b_t_I,"< 9.4 is safe")
+		print(Fore.GREEN+"b/t ratio of I beam",b_t_I,"< 9.4 is safe"+Style.RESET_ALL)
 	else:
-		print("b/t ratio of I beam",b_t_I,"> 9.4 is unsafe")
+		print(Fore.RED+"b/t ratio of I beam",b_t_I,"> 9.4 is unsafe"+Style.RESET_ALL)
 	if(b_t_C<9.4):
-		print("b/t ratio of Channel",b_t_C,"< 9.4 is safe")
+		print(Fore.GREEN+"b/t ratio of Channel",b_t_C,"< 9.4 is safe"+Style.RESET_ALL)
 	else:
-		print("b/t ratio of Channel",b_t_C,"> 9.4 is unsafe")
+		print(Fore.RED+"b/t ratio of Channel",b_t_C,"> 9.4 is unsafe"+Style.RESET_ALL)
 	if(d_t_I<84):
-		print("d/t ratio of the web",d_t_I,"< 84 is safe")
+		print(Fore.GREEN+"d/t ratio of the web",d_t_I,"< 84 is safe"+Style.RESET_ALL)
 	else:
-		print("d/t ratio of the web",d_t_I,"> 84 is unsafe")
+		print(Fore.RED+"d/t ratio of the web",d_t_I,"> 84 is unsafe"+Style.RESET_ALL)
