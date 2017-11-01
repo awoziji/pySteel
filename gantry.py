@@ -103,7 +103,7 @@ class gantry:
 	#Elastic Properties of the Joint Section
 	A = ISMB['A'][I_sec[i]] + ISMC['A'][C_sec[j]] #Area
 	print("The Summative Area is", A)
-	y_bar = ((ISMB['A'][I_sec[i]]*ISMB['h'][I_sec[i]]/2) + ISMC['A'][C_sec[j]]*(ISMB['h'][I_sec[i]]+ISMC['tw'][C_sec[j]]-ISMC['Cyy'][C_sec[j]]))/A
+	y_bar = ((ISMB['A'][I_sec[i]]*100*ISMB['h'][I_sec[i]]/2) + ISMC['A'][C_sec[j]]*100*(ISMB['h'][I_sec[i]]+ISMC['tw'][C_sec[j]]-ISMC['Cyy'][C_sec[j]]))/(A*100)
 	print("The y bar of the joint section is", y_bar)
 	h1 = y_bar - ISMB['h'][I_sec[i]]/2
 	print("h1 is =", h1)
