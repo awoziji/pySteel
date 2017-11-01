@@ -125,7 +125,7 @@ class gantry:
 	SAy1= ISMB['tf'][I_sec[i]]*ISMB['b'][I_sec[i]]*(ISMB['h'][I_sec[i]]/2+dp-ISMB['tf'][I_sec[i]]/2)+((ISMB['h'][I_sec[i]]/2+dp-ISMB['tf'][I_sec[i]])**2)*ISMB['tw'][I_sec[i]]/2
 	print("Above Equal Axis SAy1 is=",SAy1)
 
-	SAy2 = ISMC['A'][C_sec[j]]*(ISMB['h'][I_sec[i]]/2+ISMC['tw'][C_sec[j]]-dp+ISMC['Cyy'][C_sec[j]]*10)+ISMB['b'][I_sec[i]]*ISMB['tf'][I_sec[i]]*(ISMB['h'][I_sec[i]]/2-dp-(ISMB['tf'][I_sec[i]]/2))+(((ISMB['h'][I_sec[i]]/2-dp-ISMB['tf'][I_sec[i]])**2)*ISMB['tw'][I_sec[i]]/2)
+	SAy2 = ISMC['A'][C_sec[j]]*100*(ISMB['h'][I_sec[i]]/2+ISMC['tw'][C_sec[j]]-dp-(ISMC['Cyy'][C_sec[j]]*10))+ISMB['b'][I_sec[i]]*ISMB['tf'][I_sec[i]]*(ISMB['h'][I_sec[i]]/2-dp-(ISMB['tf'][I_sec[i]]/2))+(((ISMB['h'][I_sec[i]]/2-dp-ISMB['tf'][I_sec[i]])**2)*ISMB['tw'][I_sec[i]]/2)
 	print("Below Equal Axis SAy2 is=",SAy2)
 
 	Zpz = SAy1 + SAy2
