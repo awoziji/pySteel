@@ -43,7 +43,7 @@ class gantry:
 	print("Total Horizontal Load is", W_Horizontal)
 	
 	#Longitudinal Braking Load
-	W_Braking = 0.05 * W_Crane * FOS #%% of the Wheel Load of a Crane
+	W_Braking = 0.05 * W_Crane * FOS #5% of the Wheel Load of a Crane, it is also known as surge load
 	print("Horizontal Braking Load is", W_Braking)
 	
 	
