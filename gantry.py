@@ -133,6 +133,9 @@ class gantry:
 	Zpz = SAy1 + SAy2
 	print("Total Zpz=", Zpz)
 
+	Zpy= ISMB['tf'][I_sec[i]]*(ISMB['b'][I_sec[i]]**2)/4 + ((ISMC['h'][C_sec[j]]-2*ISMC['tf'][C_sec[j]])**2)*ISMC['tw'][C_sec[j]]/4 + 2*ISMC['b'][C_sec[j]]*ISMC['tf'][C_sec[j]]*(ISMC['h'][C_sec[j]]-ISMC['tf'][C_sec[j]])/2
+	print("Zpy for Top Flange only is", Zpy)
+
 	#Checks
 	b_t_I = ((ISMB['b'][I_sec[i]]-ISMB['tw'][I_sec[i]])/2)/ISMB['tf'][I_sec[i]]
 	b_t_C = ((ISMC['b'][C_sec[j]]-ISMC['tw'][C_sec[j]])/2)/ISMC['tf'][C_sec[j]]
