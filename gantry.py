@@ -152,3 +152,9 @@ class gantry:
 		print(Fore.GREEN+"d/t ratio of the web",d_t_I,"< 84 is safe"+Style.RESET_ALL)
 	else:
 		print(Fore.RED+"d/t ratio of the web",d_t_I,"> 84 is unsafe"+Style.RESET_ALL)
+
+	#Moment Capacity Check
+	Mdz1=1.2*Zzb*fy/1.1
+	Mdz2=fy*Zpz/1.1
+	Mdz = Mdz2 if (Mdz2<Mdz1) else Mdz1
+	print("Mdz is ", Mdz)
