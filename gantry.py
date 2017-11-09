@@ -118,7 +118,12 @@ class gantry:
 	print("Plastic Sections are Zzb=",Zzb,"and Zzt=",Zzt)
 	Iy = (ISMB['Iyy'][I_sec[i]] + ISMC['Ixx'][C_sec[j]])*10**4
 	print("Moment of Intertia along y axis is", Iy)
-
+	Itf=ISMB['tf'][I_sec[i]]*ISMB['b'][I_sec[i]]**3/12
+	print("Itf for the tension flange is", Itf)
+	Icf=Itf+ (ISMC['Ixx'][C_sec[j]])*10**4
+	print("Icf for the compression flange is", Icf)
+	Zty=Icf/(ISMC['h'][C_sec[j]]/2)
+	print("Zy for top flange is", Zty)
 
 	#Plastic Properties
 	dp = ISMC['A'][C_sec[j]]*100/(2*ISMB['tw'][I_sec[i]])
