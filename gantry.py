@@ -167,3 +167,10 @@ class gantry:
 	Mdy2=1.2*Zty*fy/1.1
 	Mdy = Mdy2 if (Mdy2<Mdy1) else Mdy1
 	print("Mdy is ", Mdy)
+
+	#Check
+	Mchk=(M/(Mdz*10**(-6)))+(M_y/(Mdy*10**(-6)))
+	if(Mchk<1):
+		print(Fore.GREEN+"M/Mdz+My/Mdy=",Mchk,"< 1 is safe"+Style.RESET_ALL)
+	else:
+		print(Fore.RED+"M/Mdz+My/Mdy=",Mchk,"> 1 is unsafe"+Style.RESET_ALL)
