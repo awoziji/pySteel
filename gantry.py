@@ -39,7 +39,7 @@ class gantry:
 	print("Total Vertical Load is", WC);
 	
 	#Horizontal Load
-	W_Horizontal = FOS * 0.1 * (W_Crane + W_Crab) # 10% of Crane and Crab load Combined
+	W_Horizontal = FOS * 0.1 * (W_Crane + W_Crab)/4 # 10% of Crane and Crab load Combined
 	print("Total Horizontal Load is", W_Horizontal)
 	
 	#Longitudinal Braking Load
