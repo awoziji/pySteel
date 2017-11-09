@@ -59,7 +59,7 @@ class gantry:
 	print("Vertical Bending due to dead Load", M_v_sf)
 	#Horizontal Bending Moment
 	M_y = 2*W_Horizontal*(L/2-c/4)**2/L
-	print("Moment due to Bending in horizontal axis", M_y)
+	print("Moment due to Bending in horizontal axis(Surge Load)", M_y)
 	#Moment due to Drag
 	M_drag = W_Braking*e/L*(L/2-c/4)
 	print("Moment due to Drag", M_drag)
@@ -163,3 +163,7 @@ class gantry:
 	Mdz2=fy*Zpz/1.1
 	Mdz = Mdz2 if (Mdz2<Mdz1) else Mdz1
 	print("Mdz is ", Mdz)
+	Mdy1=fy*Zpy/1.1
+	Mdy2=1.2*Zty*fy/1.1
+	Mdy = Mdy2 if (Mdy2<Mdy1) else Mdy1
+	print("Mdy is ", Mdy)
