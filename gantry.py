@@ -174,3 +174,13 @@ class gantry:
 		print(Fore.GREEN+"M/Mdz+My/Mdy=",Mchk,"< 1 is safe"+Style.RESET_ALL)
 	else:
 		print(Fore.RED+"M/Mdz+My/Mdy=",Mchk,"> 1 is unsafe"+Style.RESET_ALL)
+
+	#Shear Check
+	print("Check for Shear")
+	print("Total Vertical Load Vz=", SF)
+	Shear_cap= ISMB['h'][I_sec[i]]*ISMB['tw'][I_sec[i]]*fy/((3**(0.5))*1.1)*10**(-3)
+	Shear_cap_6=0.6*Shear_cap
+	if(Shear_cap>SF and Shear_cap_6>SF):
+		print(Fore.GREEN+"Maximum Shear is",Shear_cap," and 0.6 of the maximum shear is ",Shear_cap_6,"are both greater than the vertical laod",SF,"hence the strcuture is safe"+Style.RESET_ALL)
+	else:
+		print(Fore.GREEN+"Maximum Shear is",Shear_cap," and 0.6 of the maximum shear is ",Shear_cap_6,"are not greater than the vertical laod",SF,"hence the strcuture is unsafe"+Style.RESET_ALL)
