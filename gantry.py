@@ -96,91 +96,108 @@ class gantry:
 
 	I_sec, = np.where(ISMB['Designation']>=Ll)
 	C_sec, = np.where(ISMC['Designation']>=Lw)
-	i=0;j=1
-	I_sec_sel=ISMB['Designation'][I_sec[i]]#Selected first iteration
-	C_sec_sel=ISMC['Designation'][C_sec[j]]#Selected first iteration
+	print("fgchgcvfjhcjfh ",len(C_sec))
+	i=0;j=0
+	while i<len(I_sec):
+		fail=0
+		while j<len(C_sec):
 
-	print("The selected I section  and C Section are specifically ISMB",I_sec_sel,"and ISMC",C_sec_sel)
+			fail=0
+			I_sec_sel=ISMB['Designation'][I_sec[i]]#Selected first iteration
+			C_sec_sel=ISMC['Designation'][C_sec[j]]#Selected first iteration
 
-	#Elastic Properties of the Joint Section
-	A = ISMB['A'][I_sec[i]] + ISMC['A'][C_sec[j]] #Area
-	print("The Summative Area is", A)
-	y_bar = ((ISMB['A'][I_sec[i]]*100*ISMB['h'][I_sec[i]]/2) + ISMC['A'][C_sec[j]]*100*(ISMB['h'][I_sec[i]]+ISMC['tw'][C_sec[j]]-ISMC['Cyy'][C_sec[j]]))/(A*100)
-	print("The y bar of the joint section is", y_bar)
-	h1 = y_bar - ISMB['h'][I_sec[i]]/2
-	print("h1 is =", h1)
-	h2 = (ISMB['h'][I_sec[i]]+ISMC['tw'][C_sec[j]])-y_bar-ISMC['Cyy'][C_sec[j]]
-	print("h2 is =", h2)
-	Iz = ISMB['Ixx'][I_sec[i]]*10**4 +  ISMB['A'][I_sec[i]]*(10**2)*h1**2 + ISMC['Iyy'][C_sec[j]] + ISMC['A'][C_sec[j]]*(10**2)*h2**2
-	print("Moment of Intertia along x axis is", Iz)
-	Zzb = Iz/y_bar
-	Zzt = Iz/(ISMB['h'][I_sec[i]]-y_bar)
-	print("Plastic Sections are Zzb=",Zzb,"and Zzt=",Zzt)
-	Iy = (ISMB['Iyy'][I_sec[i]] + ISMC['Ixx'][C_sec[j]])*10**4
-	print("Moment of Intertia along y axis is", Iy)
-	Itf=ISMB['tf'][I_sec[i]]*ISMB['b'][I_sec[i]]**3/12
-	print("Itf for the tension flange is", Itf)
-	Icf=Itf+ (ISMC['Ixx'][C_sec[j]])*10**4
-	print("Icf for the compression flange is", Icf)
-	Zty=Icf/(ISMC['h'][C_sec[j]]/2)
-	print("Zy for top flange is", Zty)
+			print("The selected I section  and C Section are specifically ISMB",I_sec_sel,"and ISMC",C_sec_sel)
 
-	#Plastic Properties
-	dp = ISMC['A'][C_sec[j]]*100/(2*ISMB['tw'][I_sec[i]])
-	print("The Plastic Neutral axis is", dp)
+			#Elastic Properties of the Joint Section
+			A = ISMB['A'][I_sec[i]] + ISMC['A'][C_sec[j]] #Area
+			print("The Summative Area is", A)
+			y_bar = ((ISMB['A'][I_sec[i]]*100*ISMB['h'][I_sec[i]]/2) + ISMC['A'][C_sec[j]]*100*(ISMB['h'][I_sec[i]]+ISMC['tw'][C_sec[j]]-ISMC['Cyy'][C_sec[j]]))/(A*100)
+			print("The y bar of the joint section is", y_bar)
+			h1 = y_bar - ISMB['h'][I_sec[i]]/2
+			print("h1 is =", h1)
+			h2 = (ISMB['h'][I_sec[i]]+ISMC['tw'][C_sec[j]])-y_bar-ISMC['Cyy'][C_sec[j]]
+			print("h2 is =", h2)
+			Iz = ISMB['Ixx'][I_sec[i]]*10**4 +  ISMB['A'][I_sec[i]]*(10**2)*h1**2 + ISMC['Iyy'][C_sec[j]] + ISMC['A'][C_sec[j]]*(10**2)*h2**2
+			print("Moment of Intertia along x axis is", Iz)
+			Zzb = Iz/y_bar
+			Zzt = Iz/(ISMB['h'][I_sec[i]]-y_bar)
+			print("Plastic Sections are Zzb=",Zzb,"and Zzt=",Zzt)
+			Iy = (ISMB['Iyy'][I_sec[i]] + ISMC['Ixx'][C_sec[j]])*10**4
+			print("Moment of Intertia along y axis is", Iy)
+			Itf=ISMB['tf'][I_sec[i]]*ISMB['b'][I_sec[i]]**3/12
+			print("Itf for the tension flange is", Itf)
+			Icf=Itf+ (ISMC['Ixx'][C_sec[j]])*10**4
+			print("Icf for the compression flange is", Icf)
+			Zty=Icf/(ISMC['h'][C_sec[j]]/2)
+			print("Zy for top flange is", Zty)
 
-	SAy1= ISMB['tf'][I_sec[i]]*ISMB['b'][I_sec[i]]*(ISMB['h'][I_sec[i]]/2+dp-ISMB['tf'][I_sec[i]]/2)+((ISMB['h'][I_sec[i]]/2+dp-ISMB['tf'][I_sec[i]])**2)*ISMB['tw'][I_sec[i]]/2
-	print("Above Equal Axis SAy1 is=",SAy1)
+			#Plastic Properties
+			dp = ISMC['A'][C_sec[j]]*100/(2*ISMB['tw'][I_sec[i]])
+			print("The Plastic Neutral axis is", dp)
 
-	SAy2 = ISMC['A'][C_sec[j]]*100*(ISMB['h'][I_sec[i]]/2+ISMC['tw'][C_sec[j]]-dp-(ISMC['Cyy'][C_sec[j]]*10))+ISMB['b'][I_sec[i]]*ISMB['tf'][I_sec[i]]*(ISMB['h'][I_sec[i]]/2-dp-(ISMB['tf'][I_sec[i]]/2))+(((ISMB['h'][I_sec[i]]/2-dp-ISMB['tf'][I_sec[i]])**2)*ISMB['tw'][I_sec[i]]/2)
-	print("Below Equal Axis SAy2 is=",SAy2)
+			SAy1= ISMB['tf'][I_sec[i]]*ISMB['b'][I_sec[i]]*(ISMB['h'][I_sec[i]]/2+dp-ISMB['tf'][I_sec[i]]/2)+((ISMB['h'][I_sec[i]]/2+dp-ISMB['tf'][I_sec[i]])**2)*ISMB['tw'][I_sec[i]]/2
+			print("Above Equal Axis SAy1 is=",SAy1)
 
-	Zpz = SAy1 + SAy2
-	print("Total Zpz=", Zpz)
+			SAy2 = ISMC['A'][C_sec[j]]*100*(ISMB['h'][I_sec[i]]/2+ISMC['tw'][C_sec[j]]-dp-(ISMC['Cyy'][C_sec[j]]*10))+ISMB['b'][I_sec[i]]*ISMB['tf'][I_sec[i]]*(ISMB['h'][I_sec[i]]/2-dp-(ISMB['tf'][I_sec[i]]/2))+(((ISMB['h'][I_sec[i]]/2-dp-ISMB['tf'][I_sec[i]])**2)*ISMB['tw'][I_sec[i]]/2)
+			print("Below Equal Axis SAy2 is=",SAy2)
 
-	Zpy= ISMB['tf'][I_sec[i]]*(ISMB['b'][I_sec[i]]**2)/4 + ((ISMC['h'][C_sec[j]]-2*ISMC['tf'][C_sec[j]])**2)*ISMC['tw'][C_sec[j]]/4 + 2*ISMC['b'][C_sec[j]]*ISMC['tf'][C_sec[j]]*(ISMC['h'][C_sec[j]]-ISMC['tf'][C_sec[j]])/2
-	print("Zpy for Top Flange only is", Zpy)
+			Zpz = SAy1 + SAy2
+			print("Total Zpz=", Zpz)
 
-	#Checks
-	b_t_I = ((ISMB['b'][I_sec[i]]-ISMB['tw'][I_sec[i]])/2)/ISMB['tf'][I_sec[i]]
-	b_t_C = ((ISMC['b'][C_sec[j]]-ISMC['tw'][C_sec[j]])/2)/ISMC['tf'][C_sec[j]]
-	d_t_I = ((ISMB['h'][I_sec[i]]-2*ISMB['tf'][I_sec[i]])/ISMB['tw'][I_sec[i]])
-	if(b_t_I<9.4):
-		print(Fore.GREEN+"b/t ratio of I beam",b_t_I,"< 9.4 is safe"+Style.RESET_ALL)
-	else:
-		print(Fore.RED+"b/t ratio of I beam",b_t_I,"> 9.4 is unsafe"+Style.RESET_ALL)
-	if(b_t_C<9.4):
-		print(Fore.GREEN+"b/t ratio of Channel",b_t_C,"< 9.4 is safe"+Style.RESET_ALL)
-	else:
-		print(Fore.RED+"b/t ratio of Channel",b_t_C,"> 9.4 is unsafe"+Style.RESET_ALL)
-	if(d_t_I<84):
-		print(Fore.GREEN+"d/t ratio of the web",d_t_I,"< 84 is safe"+Style.RESET_ALL)
-	else:
-		print(Fore.RED+"d/t ratio of the web",d_t_I,"> 84 is unsafe"+Style.RESET_ALL)
+			Zpy= ISMB['tf'][I_sec[i]]*(ISMB['b'][I_sec[i]]**2)/4 + ((ISMC['h'][C_sec[j]]-2*ISMC['tf'][C_sec[j]])**2)*ISMC['tw'][C_sec[j]]/4 + 2*ISMC['b'][C_sec[j]]*ISMC['tf'][C_sec[j]]*(ISMC['h'][C_sec[j]]-ISMC['tf'][C_sec[j]])/2
+			print("Zpy for Top Flange only is", Zpy)
 
-	#Moment Capacity Check
-	Mdz1=1.2*Zzb*fy/1.1
-	Mdz2=fy*Zpz/1.1
-	Mdz = Mdz2 if (Mdz2<Mdz1) else Mdz1
-	print("Mdz is ", Mdz)
-	Mdy1=fy*Zpy/1.1
-	Mdy2=1.2*Zty*fy/1.1
-	Mdy = Mdy2 if (Mdy2<Mdy1) else Mdy1
-	print("Mdy is ", Mdy)
+			#Checks
+			b_t_I = ((ISMB['b'][I_sec[i]]-ISMB['tw'][I_sec[i]])/2)/ISMB['tf'][I_sec[i]]
+			b_t_C = ((ISMC['b'][C_sec[j]]-ISMC['tw'][C_sec[j]])/2)/ISMC['tf'][C_sec[j]]
+			d_t_I = ((ISMB['h'][I_sec[i]]-2*ISMB['tf'][I_sec[i]])/ISMB['tw'][I_sec[i]])
+			if(b_t_I<9.4):
+				print(Fore.GREEN+"b/t ratio of I beam",b_t_I,"< 9.4 is safe"+Style.RESET_ALL)
+			else:
+				print(Fore.RED+"b/t ratio of I beam",b_t_I,"> 9.4 is unsafe"+Style.RESET_ALL)
+				fail=1
+			if(b_t_C<9.4):
+				print(Fore.GREEN+"b/t ratio of Channel",b_t_C,"< 9.4 is safe"+Style.RESET_ALL)
+			else:
+				print(Fore.RED+"b/t ratio of Channel",b_t_C,"> 9.4 is unsafe"+Style.RESET_ALL)
+				fail=1
+			if(d_t_I<84):
+				print(Fore.GREEN+"d/t ratio of the web",d_t_I,"< 84 is safe"+Style.RESET_ALL)
+			else:
+				print(Fore.RED+"d/t ratio of the web",d_t_I,"> 84 is unsafe"+Style.RESET_ALL)
+				fail=1
 
-	#Check
-	Mchk=(M/(Mdz*10**(-6)))+(M_y/(Mdy*10**(-6)))
-	if(Mchk<1):
-		print(Fore.GREEN+"M/Mdz+My/Mdy=",Mchk,"< 1 is safe"+Style.RESET_ALL)
-	else:
-		print(Fore.RED+"M/Mdz+My/Mdy=",Mchk,"> 1 is unsafe"+Style.RESET_ALL)
+			#Moment Capacity Check
+			Mdz1=1.2*Zzb*fy/1.1
+			Mdz2=fy*Zpz/1.1
+			Mdz = Mdz2 if (Mdz2<Mdz1) else Mdz1
+			print("Mdz is ", Mdz)
+			Mdy1=fy*Zpy/1.1
+			Mdy2=1.2*Zty*fy/1.1
+			Mdy = Mdy2 if (Mdy2<Mdy1) else Mdy1
+			print("Mdy is ", Mdy)
 
-	#Shear Check
-	print("Check for Shear")
-	print("Total Vertical Load Vz=", SF)
-	Shear_cap= ISMB['h'][I_sec[i]]*ISMB['tw'][I_sec[i]]*fy/((3**(0.5))*1.1)*10**(-3)
-	Shear_cap_6=0.6*Shear_cap
-	if(Shear_cap>SF and Shear_cap_6>SF):
-		print(Fore.GREEN+"Maximum Shear is",Shear_cap," and 0.6 of the maximum shear is ",Shear_cap_6,"are both greater than the vertical laod",SF,"hence the strcuture is safe"+Style.RESET_ALL)
-	else:
-		print(Fore.GREEN+"Maximum Shear is",Shear_cap," and 0.6 of the maximum shear is ",Shear_cap_6,"are not greater than the vertical laod",SF,"hence the strcuture is unsafe"+Style.RESET_ALL)
+			#Check
+			Mchk=(M/(Mdz*10**(-6)))+(M_y/(Mdy*10**(-6)))
+			if(Mchk<1):
+				print(Fore.GREEN+"M/Mdz+My/Mdy=",Mchk,"< 1 is safe"+Style.RESET_ALL)
+			else:
+				print(Fore.RED+"M/Mdz+My/Mdy=",Mchk,"> 1 is unsafe"+Style.RESET_ALL)
+				fail=1
+
+			#Shear Check
+			print("Check for Shear")
+			print("Total Vertical Load Vz=", SF)
+			Shear_cap= ISMB['h'][I_sec[i]]*ISMB['tw'][I_sec[i]]*fy/((3**(0.5))*1.1)*10**(-3)
+			Shear_cap_6=0.6*Shear_cap
+			if(Shear_cap>SF and Shear_cap_6>SF):
+				print(Fore.GREEN+"Maximum Shear is",Shear_cap," and 0.6 of the maximum shear is ",Shear_cap_6,"are both greater than the vertical laod",SF,"hence the strcuture is safe"+Style.RESET_ALL)
+			else:
+				print(Fore.GREEN+"Maximum Shear is",Shear_cap," and 0.6 of the maximum shear is ",Shear_cap_6,"are not greater than the vertical laod",SF,"hence the strcuture is unsafe"+Style.RESET_ALL)
+				fail=1
+
+			if(fail==0):
+				break;
+			fail=0
+			j+=1
+		i+=1
