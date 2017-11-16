@@ -96,7 +96,6 @@ class gantry:
 
 	I_sec, = np.where(ISMB['Designation']>=Ll)
 	C_sec, = np.where(ISMC['Designation']>=Lw)
-	print("fgchgcvfjhcjfh ",len(C_sec))
 	i=0;j=0
 	while i<len(I_sec):
 		fail=0
