@@ -200,3 +200,5 @@ class gantry:
 			fail=0
 			j+=1
 		i+=1
+		print(Fore.BLUE+"Channel Section is ISMC",ISMC['Designation'][C_sec[j]],""+Style.RESET_ALL)
+		print(Fore.BLUE+"I Section is ISMB",ISMB['Designation'][I_sec[i-1]],""+Style.RESET_ALL)
