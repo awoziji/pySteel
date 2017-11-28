@@ -12,6 +12,7 @@ print("email- yajnab@gmail.com")
 
 import numpy as np
 from colorama import init, Fore, Style
+from PIL import Image, ImageFont, ImageDraw
 
 #Constants
 FOS = 1.5 #Factor of Safety
@@ -202,3 +203,15 @@ class gantry:
 		i+=1
 		print(Fore.BLUE+"Channel Section is ISMC",ISMC['Designation'][C_sec[j]],""+Style.RESET_ALL)
 		print(Fore.BLUE+"I Section is ISMB",ISMB['Designation'][I_sec[i-1]],""+Style.RESET_ALL)
+
+		#Image Formation
+		Csec="Channel Section is ISMC"+str(ISMC['Designation'][C_sec[j]])
+		Isec="I Section is ISMB"+str(ISMB['Designation'][I_sec[i-1]])
+		img = Image.open("gantryimg.jpg")
+		draw = ImageDraw.Draw(img)
+
+		font = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMono.ttf", 14)
+
+		draw.text((290, 130),(Csec),(0,0,0), font=font)
+		draw.text((290, 150),(Isec),(0,0,0), font=font)
+		img.save('output.jpg')
