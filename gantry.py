@@ -215,3 +215,4 @@ class gantry:
 		draw.text((290, 130),(Csec),(0,0,0), font=font)
 		draw.text((290, 150),(Isec),(0,0,0), font=font)
 		img.save('output.jpg')
+		img.show()
