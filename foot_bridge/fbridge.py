@@ -33,3 +33,8 @@ class fbridge:
 	print("Maximum Deflection \t",Fore.WHITE+Back.BLUE+"",max_def,"",Style.RESET_ALL)
 	perm_def = span*1000/325
 	print("Permissible Deflection \t",Fore.WHITE+Back.BLUE+"",perm_def,"",Style.RESET_ALL)
+	if(perm_def<max_def):
+		print(Fore.RED+"Exceeding Permissible Deflection"+Style.RESET_ALL)
+	else:
+		print(Fore.GREEN+"Safe Deflection limit"+Style.RESET_ALL)
+
