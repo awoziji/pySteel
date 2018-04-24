@@ -24,7 +24,8 @@ span= 20 #Span of the Girder
 
 
 class plate_girder:
-
+	init() #Initialize Colorama
+	
 	w_udl = udl*span#UDL Load on Girder
 	F_w_udl = w_udl*FOS	#Factored w_udl
 	print("Superimposed Uniformaly Distributed Load on the Girder Span is", w_udl)
