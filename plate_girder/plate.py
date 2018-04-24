@@ -39,10 +39,14 @@ class plate_girder:
 	print("Self Load on the Girder Span is", w_self)
 	print("Factored Self Load on the Girder Span is", F_w_self)
 	w_total_udl = (w_self+udl)*FOS
-	print("Total Load on the Girder Span is", w_total_udl)
+	print("Total UDL Load on the Girder Span is w_total_udl=", w_total_udl)
+	w_total = w_total_udl*span + c_load_n*c_load*FOS
+	print("Total Load on the Girder w_total=", w_total)
 
 	#Calculation of Reactions
 	#Let two reactions be at the supports. Reaction at the one end be Ra and the other end be Rb
 	#Moment on one side(Lets say its B) have the moment as 0. So the reaction will play like
 	Ra = (w_total_udl*0.5*(span**2)+F_w_c*(span-c_load_dist)+F_w_c*(c_load_dist))/span
-	print("The Reaction at Reaction point a be", Ra)
+	print("The Reaction at Reaction point a be Ra=", Ra)
+	Rb = w_total - Ra
+	print("The Reaction at Reaction point a be Rb=", Rb)
