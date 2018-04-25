@@ -22,7 +22,7 @@ c_load = 150 #Concentrated Load at 6m from either ends
 c_load_dist = 6 #Distance of loads from either of the ends
 span= 20 #Span of the Girder
 k=200#Value of d/tw
-fy=250#Value of Fy
+f_y=250#Value of Fy
 
 
 class plate_girder:
@@ -62,3 +62,4 @@ class plate_girder:
 	#Dimension of the Flange and the Web
 	M_k = BM_cnc if (BM_cnc>BM_ctr) else BM_ctr #Consider the greater moment
 	d = (M_k*k/f_y)**(1/3) #optimum depth of the plate girder
+	print(d)
