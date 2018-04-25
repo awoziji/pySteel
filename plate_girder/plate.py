@@ -73,3 +73,4 @@ class plate_girder:
 				print(Fore.GREEN+"The d/tw ratio",k_new," is safe"+Style.RESET_ALL)
 	else:
 				print(Fore.RED+"The d/tw ratio",k_new," is unsafe"+Style.RESET_ALL)
+	print(Fore.MAGENTA+"The Dimension of the Web Plate is ",d_r,"x",tw,""+Style.RESET_ALL)
