@@ -21,6 +21,8 @@ c_load_n=2 #NUmber of Concentrated Loads
 c_load = 150 #Concentrated Load at 6m from either ends
 c_load_dist = 6 #Distance of loads from either of the ends
 span= 20 #Span of the Girder
+k=200#Value of d/tw
+fy=250#Value of Fy
 
 
 class plate_girder:
