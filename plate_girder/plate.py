@@ -74,3 +74,14 @@ class plate_girder:
 	else:
 				print(Fore.RED+"The d/tw ratio",k_new," is unsafe"+Style.RESET_ALL)
 	print(Fore.MAGENTA+"The Dimension of the Web Plate is ",d_r,"x",tw,""+Style.RESET_ALL)
+
+	A_f = (M_k*(10**6))/((f_y/1.1)*d_r)
+	print("Area of the flange is ",A_f)
+	#Thichness of Flange
+	t_f = (A_f/(2*9.4))**(0.5)
+	if(t_f<50):
+		t_f=50
+	b_f = A_f/t_f
+	if(b_f<300):
+		b_f=300
+	print(Fore.CYAN+"The Dimension of the flange plate is", b_f, "x", t_f);
