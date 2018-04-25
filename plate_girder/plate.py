@@ -50,3 +50,9 @@ class plate_girder:
 	print("The Reaction at Reaction point a be Ra=", Ra)
 	Rb = w_total - Ra
 	print("The Reaction at Reaction point a be Rb=", Rb)
+
+	#Bending Moments
+	BM_cnc = Ra*c_load_dist - w_total_udl*(c_load_dist**2)/2
+	print("Bending moment at the concentrated load points BM_cnc=",BM_cnc)
+	BM_ctr = Ra*(span/2) - F_w_c*((span/2)-c_load_dist) - w_total_udl*0.5*(span/2)**2
+	print("Bending moment at the center of the span BM_ctr=",BM_ctr)
