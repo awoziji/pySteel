@@ -56,3 +56,6 @@ class plate_girder:
 	print("Bending moment at the concentrated load points BM_cnc=",BM_cnc)
 	BM_ctr = Ra*(span/2) - F_w_c*((span/2)-c_load_dist) - w_total_udl*0.5*(span/2)**2
 	print("Bending moment at the center of the span BM_ctr=",BM_ctr)
+
+	#Dimension of the Flange and the Web
+	M_k = BM_cnc if (BM_cnc>BM_ctr) else BM_ctr #Consider the greater moment
