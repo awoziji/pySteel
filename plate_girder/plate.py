@@ -61,3 +61,4 @@ class plate_girder:
 
 	#Dimension of the Flange and the Web
 	M_k = BM_cnc if (BM_cnc>BM_ctr) else BM_ctr #Consider the greater moment
+	d = (M_k*k/f_y)**(1/3) #optimum depth of the plate girder
