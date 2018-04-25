@@ -13,6 +13,7 @@ print("email- yajnab@gmail.com")
 import numpy as np
 from colorama import init, Fore, Style, Back
 from PIL import Image, ImageFont, ImageDraw
+import math
 
 #Constants
 FOS = 1.5 #Factor of Safety
@@ -62,4 +63,13 @@ class plate_girder:
 	#Dimension of the Flange and the Web
 	M_k = BM_cnc if (BM_cnc>BM_ctr) else BM_ctr #Consider the greater moment
 	d = (M_k*(10**6)*k/f_y)**(0.33) #optimum depth of the plate girder
-	print(d)
+	d_r=round(d,-2)+100
+	print("Roudning off the larger value of depth d_r=",d_r)
+
+	#Assuming thickness of the plate girder be tw= 10mm
+	tw = 10
+	k_new = d_r/tw
+	if(k_new<k):
+				print(Fore.GREEN+"The d/tw ratio",k_new," is safe"+Style.RESET_ALL)
+	else:
+				print(Fore.RED+"The d/tw ratio",k_new," is unsafe"+Style.RESET_ALL)
