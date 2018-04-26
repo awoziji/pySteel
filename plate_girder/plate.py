@@ -85,3 +85,8 @@ class plate_girder:
 	if(b_f<300):
 		b_f=300
 	print(Fore.CYAN+"The Dimension of the flange plate is", b_f, "x", t_f);
+
+
+	#I Section pool
+	ISMB = np.genfromtxt('ISMB.csv' , dtype=None, delimiter=',', names=True)
+	I_sec, = np.where(ISMB['Designation']>=Ll)
