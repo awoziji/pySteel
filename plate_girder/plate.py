@@ -111,3 +111,14 @@ class plate_girder:
 	print("Value of T_cr = ", tow_cr)
 	lmb_w = (f_y/(1.73*tow_cr))**0.5
 	print("Value of lambda_W = ",lmb_w)
+	tow_b = lmb_w/1.73
+	if(lmb_w>0.8):
+		tow_b = (1-0.8*(lmb_w-0.8))*f_y/1.73
+	if(lmb_w>1.2):
+		tow_b=(f_y/(1.73*lmb_w**2))
+	print("The value of tow_b is = ",tow_b)
+	Vcr = Af * tow_b/1000;
+	if(Vcr > Ra):
+		print(Fore.GREEN+"Safe in Shear Failure as Shear Force", Ra, " is smaller than", Vcr,""+Style.RESET_ALL);
+	if(Vcr < Ra):
+		print(Fore.RED+"Unsafe in Shear Failure Passed as Shear Force", Ra, " is greater than", Vcr,""+Style.RESET_ALL);
