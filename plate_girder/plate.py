@@ -22,7 +22,7 @@ c_load_n=2 #NUmber of Concentrated Loads
 c_load = 150 #Concentrated Load at 6m from either ends
 c_load_dist = 6 #Distance of loads from either of the ends
 span= 20 #Span of the Girder
-k=200#Value of d/tw
+k=180#Value of d/tw
 f_y=250#Value of Fy
 
 
@@ -64,29 +64,20 @@ class plate_girder:
 	M_k = BM_cnc if (BM_cnc>BM_ctr) else BM_ctr #Consider the greater moment
 	d = (M_k*(10**6)*k/f_y)**(0.33) #optimum depth of the plate girder
 	d_r=round(d,-2)+100
-	print("Roudning off the larger value of depth d_r=",d_r)
+	print(Fore.CYAN+"Depth of the Web is d=",d_r,""+Style.RESET_ALL)
 
-	#Assuming thickness of the plate girder be tw= 10mm
-	tw = 10
-	k_new = d_r/tw
-	if(k_new<k):
-				print(Fore.GREEN+"The d/tw ratio",k_new," is safe"+Style.RESET_ALL)
-	else:
-				print(Fore.RED+"The d/tw ratio",k_new," is unsafe"+Style.RESET_ALL)
-	print(Fore.MAGENTA+"The Dimension of the Web Plate is ",d_r,"x",tw,""+Style.RESET_ALL)
+	#Optimum thickness of the web
+	tw = (M_k*10**6/(f_y*k**2))**0.33
+	#Too small so increasing it
+	tw = 1.8*tw
+	print(Fore.CYAN+"Thickness of the Web is tw=",tw,""+Style.RESET_ALL)
 
-	A_f = (M_k*(10**6))/((f_y/1.1)*d_r)
-	print("Area of the flange is ",A_f)
-	#Thichness of Flange
-	t_f = (A_f/(2*9.4))**(0.5)
-	if(t_f<50):
-		t_f=50
-	b_f = A_f/t_f
-	if(b_f<300):
-		b_f=300
-	print(Fore.CYAN+"The Dimension of the flange plate is", b_f, "x", t_f);
+	#Design of Flange
+	Af = (M_k*10**6*1.1)/(250*d_r)
+	print(Fore.CYAN+"Area of the Flange Af=",Af,""+Style.RESET_ALL)
 
-
-	#I Section pool
-	ISMB = np.genfromtxt('ISMB.csv' , dtype=None, delimiter=',', names=True)
-	I_sec, = np.where(ISMB['Designation']>=Ll)
+	#WIdth of the Flange
+	bf= 0.3*d_r
+	print(Fore.CYAN+"Width of the Flange = bf= ",bf,""+Style.RESET_ALL)
+	tf=Af/bf
+	print(Fore.CYAN+"Thickness of the flange is tf=",tf,""+Style.RESET_ALL)
