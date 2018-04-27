@@ -109,3 +109,5 @@ class plate_girder:
 	#Check for Shear Capacity
 	tow_cr = (5.35*3.14*3.14*2*10**5)/(12*(1-0.3)*(d/tw)**2)
 	print("Value of T_cr = ", tow_cr)
+	lmb_w = (f_y/(1.73*tow_cr))**0.5
+	print("Value of lambda_W = ",lmb_w)
