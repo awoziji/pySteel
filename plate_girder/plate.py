@@ -72,6 +72,8 @@ class plate_girder:
 	tw = 1.8*tw
 	print(Fore.CYAN+"Thickness of the Web is tw=",tw,""+Style.RESET_ALL)
 
+	print(Fore.MAGENTA+"The Dimension of the web is", d_r, "x", tw,""+Style.RESET_ALL);
+
 	#Design of Flange
 	Af = (M_k*10**6*1.1)/(250*d_r)
 	print(Fore.CYAN+"Area of the Flange Af=",Af,""+Style.RESET_ALL)
@@ -81,3 +83,5 @@ class plate_girder:
 	print(Fore.CYAN+"Width of the Flange = bf= ",bf,""+Style.RESET_ALL)
 	tf=Af/bf
 	print(Fore.CYAN+"Thickness of the flange is tf=",tf,""+Style.RESET_ALL)
+
+	print(Fore.MAGENTA+"The Dimension of the flange plate is", bf, "x", tf,""+Style.RESET_ALL);
