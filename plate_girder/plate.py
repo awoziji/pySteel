@@ -85,3 +85,23 @@ class plate_girder:
 	print(Fore.CYAN+"Thickness of the flange is tf=",tf,""+Style.RESET_ALL)
 
 	print(Fore.MAGENTA+"The Dimension of the flange plate is", bf, "x", tf,""+Style.RESET_ALL);
+
+	#Classification
+	b = (bf-tw)/2
+	flag = b/tf
+	if (flag>8.4):
+		print(Fore.RED+"Section is not plastic as d/tw ratio =",flag,""+Style.RESET_ALL)
+		exit()
+	else:
+		print(Fore.GREEN+"Section is plastic as d/tw ratio =",flag,""+Style.RESET_ALL)
+
+	#Check for Bending Strength
+	Zpz = 2*(bf*tf)*((d_r/2 + tf))
+	print("Plastic Section modulus Zpz=",Zpz)
+	Md = 0.92*Zpz*f_y/1.1
+	print(Md)
+	print(M_k)
+	if(Md<(M_k*10**6)):
+		print("safe")
+	else:
+		print("unsafe")
