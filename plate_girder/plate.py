@@ -105,3 +105,7 @@ class plate_girder:
 		print("safe")
 	else:
 		print("unsafe")
+
+	#Check for Shear Capacity
+	tow_cr = (5.35*3.14*3.14*2*10**5)/(12*(1-0.3)*(d/tw)**2)
+	print("Value of T_cr = ", tow_cr)
