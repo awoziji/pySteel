@@ -176,3 +176,18 @@ class plate_girder:
 			print(Fore.GREEN+"End Stiffners are safe in torsional Loading"+Style.RESET_ALL)
 		else:
 			print(Fore.RED+"End Stiffners are not safe in torsional Loading"+Style.RESET_ALL)
+
+		#Connection of End Bearing Stiffners
+		weld_eb = 6 #Assuming the size of end bearing stiffner to be 6mm
+		t_e_eb= 0.707*weld_eb
+		#Strength of Shop weld per unit length
+		P_dw_eb = t_e_eb*f_y/(1.73*1.25)
+
+		#Available width of the stiffner connected to flange
+		l_n_eb = eb_stf- 15
+		#Tension Capacity
+		Tdn = 0.9*(l_n_eb*tw)*410/1.25
+		print("Tension capacity of one stiffner Tdn=",Tdn)
+		#Shear Force Subjected to the unit length of the weild is
+		q1 = Tdn/(2*(d-2*15))
+		print("Shear Force Subjected to the unit length of the weild is q1=", q1)
