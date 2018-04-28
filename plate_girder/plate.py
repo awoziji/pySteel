@@ -129,5 +129,13 @@ class plate_girder:
 	#Effective throat thickness
 	t_e = 0.707*weld
 	p_d=1*t_e*f_y/(1.1*1.73*1000)
-	print(t_e)
+	print("Weld Size = ",t_e)
 	print(p_d)
+	Izz = (bf*(d+tw)**3)/12 - ((bf-tw)*d**3)/12
+	print(Izz)
+	qw = (Ra*(Af)*(d+tf)/4)/Izz
+
+	if(qw>p_d):
+		print(Fore.GREEN+"Safe load on unit length of weld"+Style.RESET_ALL);
+	else:
+		print(Fore.RED+"Unsafe load on unit length of weld "+Style.RESET_ALL)
