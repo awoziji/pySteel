@@ -122,3 +122,12 @@ class plate_girder:
 		print(Fore.GREEN+"Safe in Shear Failure as Shear Force", Ra, " is smaller than", Vcr,""+Style.RESET_ALL);
 	if(Vcr < Ra):
 		print(Fore.RED+"Unsafe in Shear Failure Passed as Shear Force", Ra, " is greater than", Vcr,""+Style.RESET_ALL);
+
+	#Flange to Web Connection
+	#Let us provide the weld of Size = 6mm
+	weld=6 #mm
+	#Effective throat thickness
+	t_e = 0.707*weld
+	p_d=1*t_e*f_y/(1.1*1.73*1000)
+	print(t_e)
+	print(p_d)
