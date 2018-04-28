@@ -152,3 +152,13 @@ class plate_girder:
 		eb_thk = 16 #Assuming
 		eb_stf = 14*eb_thk
 		print(Fore.MAGENTA+"The Dimesion of End bearing stiffner are", eb_thk," x ",eb_stf,""+Style.RESET_ALL)
+
+		#Bearing capacity on the stiffners
+		sf_stf = F_w-Ra #Shear Force on the stiffners
+		w_stf = eb_stf - 15
+		Fs = 2*w_stf*f_y/1.1
+		if(Fs>Ra):
+			print(Fore.GREEN+"End Bearing is safe in bearing"+Style.RESET_ALL);
+		else:
+			print(Fore.RED+"End Bearing is unsafe in Bearing. Redesign the Frame "+Style.RESET_ALL)
+			exit()
