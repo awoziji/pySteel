@@ -162,3 +162,17 @@ class plate_girder:
 		else:
 			print(Fore.RED+"End Bearing is unsafe in Bearing. Redesign the Frame "+Style.RESET_ALL)
 			exit()
+
+		# Torsional Check for End Bearing Stiffner
+		Is = (eb_thk*(eb_stf*2)**3)/12
+		Iyy = (tf*bf**3)/6 + (d*tw**3)/12
+		A_s = tf*bf*2 + d*tw
+		rry = (Iyy/A_s)**0.5
+		alpha_s = 30/(((span*10**3)/rry)**2)
+
+		Is2 = 0.34*alpha_s*((d+2*tw)**3)*tf
+
+		if(Is>Is2):
+			print(Fore.GREEN+"End Stiffners are safe in torsional Loading"+Style.RESET_ALL)
+		else:
+			print(Fore.RED+"End Stiffners are not safe in torsional Loading"+Style.RESET_ALL)
