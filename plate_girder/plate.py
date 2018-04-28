@@ -139,3 +139,16 @@ class plate_girder:
 		print(Fore.GREEN+"Safe load on unit length of weld"+Style.RESET_ALL);
 	else:
 		print(Fore.RED+"Unsafe load on unit length of weld "+Style.RESET_ALL)
+
+	#End Bearing Stiffner
+	F_w = (125+2.5*(tf))*tw*250/1.1
+
+	if(F_w<Ra):
+		print(Fore.GREEN+"Safe, No stiffner is required"+Style.RESET_ALL);
+		exit()
+	else:
+		print(Fore.RED+"Unsafe... Designing the End Bearing Stiffner "+Style.RESET_ALL)
+		#Dimension of the end bearing stiffner
+		eb_thk = 16 #Assuming
+		eb_stf = 14*eb_thk
+		print(Fore.MAGENTA+"The Dimesion of End bearing stiffner are", eb_thk," x ",eb_stf,""+Style.RESET_ALL)
