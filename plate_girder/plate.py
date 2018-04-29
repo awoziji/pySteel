@@ -191,3 +191,17 @@ class plate_girder:
 		#Shear Force Subjected to the unit length of the weild is
 		q1 = Tdn/(2*(d-2*15))
 		print("Shear Force Subjected to the unit length of the weild is q1=", q1)
+
+
+		#Generating Image
+		img = Image.open("plate.jpg")
+		draw = ImageDraw.Draw(img)
+
+		font = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMono.ttf", 14)
+
+		draw.text((400, 320),("bf = "+str(bf)),(0,0,0), font=font)
+		draw.text((400, 340),("tf = "+str(tf)),(0,0,0), font=font)
+		draw.text((400, 360),("tw = "+str(tw)),(0,0,0), font=font)
+		draw.text((400, 380),("d = "+str(d)),(0,0,0), font=font)
+		img.save('output.jpg')
+		img.show()
