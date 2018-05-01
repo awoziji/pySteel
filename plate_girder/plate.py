@@ -1,5 +1,5 @@
 #
-##Gantry Girder Designer
+##Plate Girder Designer
 ##Author-Yajnavalkya Bandyopadhyay
 ##B.Tech Project Part 2
 ##Supervisor - Mr. Somnath Majumder
